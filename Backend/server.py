@@ -61,14 +61,12 @@ responder = api.model('CFRResponder', {
 db_name = 'cfr-db'
 db_emergency = 'emergency'
 
-# A Data Access Object to handle the reading and writing of Product records to the Cloudant DB
 
-class ProductDAO(object):
+class Responder(object):
     def __init__(self):
         if db_name in client.all_dbs():
             self.cfr_db = client[db_name]
         else:
-            # Create the DB and immport the dummy data
             self.cfr_db = client.create_database(db_name)
             self.import_data()
 
@@ -93,8 +91,6 @@ class ProductDAO(object):
         return my_document
 
     def create(self, i, data):
-        # For now, we'll set the id to be the same as the barcode_id. For production systems, we would
-        # probably want these seperate, and to implement indexed searching by barcode_id for GET.
         try:
             data['_id'] = str(i)
             my_document = self.cfr_db.create_document(data)
@@ -137,14 +133,11 @@ class Emergency(object):
         try:
             my_document = self.emergency_db[id]
             my_document['id'] = my_document['_id']
-            # my_document['id'] = my_document['barcode_id']
         except KeyError:
             api.abort(404, "Product {} not registered".format(id))
         return my_document
 
     def get_by_postal(self, postalCode):
-        # For now this is easy, since id is the same as barcode_id....in the future this would need an
-        # index of some such search ability
         try:
             data=[]
             postalCode = int(postalCode)
@@ -156,8 +149,6 @@ class Emergency(object):
         return data
 
     def create(self, data):
-        # For now, we'll set the id to be the same as the barcode_id. For production systems, we would
-        # probably want these seperate, and to implement indexed searching by barcode_id for GET.
         try:
             data['_id'] = str(self.key)
             data['status'] = 'ACTIVE'
@@ -182,11 +173,6 @@ class Emergency(object):
         except KeyError:
             api.abort(404, "Product {} not registered".format(id))
         return
-# Handlers for the actual API urls
-
-# In a more production orientated version, you might well split these endpoints into
-# those for a consumer (which is really just "look up by barcode"), and those that
-# allow manufacturers to publish their product data.
 
 @product_ns.route('/responder')
 class Product(Resource):
@@ -194,7 +180,6 @@ class Product(Resource):
     @api.doc('List products')
     @api.doc(params={'postalCode': 'The barcode ID of this product (optional)'})
     def get(self):
-        # Currently we support either a full list, or query by barcode_id.
         parser = reqparse.RequestParser()
         parser.add_argument('postalCode', required=False, location='args')
         args = parser.parse_args()
@@ -211,10 +196,6 @@ class Patient(Resource):
     def post(self):
         return Emergency().create(api.payload), 201
 
-    # @api.marshal_with(emergency)
-    # def get(self):
-    #     return Emergency().get_by_status()
-
 @product_ns.route('/patient/<string:id>')
 class ProductWithID(Resource):
     @api.marshal_with(emergency)
@@ -227,13 +208,5 @@ class ProductWithID(Resource):
     def patch(self,id):
         return Emergency().update(id)
 
-    # @api.marshal_with(emergency)
-    # @api.doc(params={'id': 'The unique ID of this product'})
-    # def delete(self, id):
-    #     return ProductDAO().delete(id)
-
 if __name__ == '__main__':
 	app.run()
-
-
-###service to fetch postalcode

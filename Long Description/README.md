@@ -57,3 +57,4 @@ Preventive Analytical Tools with Emergency Trigger System
 
 
 ## 4. Conclusion 
+To conclude, Emergenzyl could provide efficient deployment of CFR through Preventive measure of Emergenzyl! analytics and better sense-making from Emergenzyl! bracelet and improved myResponder

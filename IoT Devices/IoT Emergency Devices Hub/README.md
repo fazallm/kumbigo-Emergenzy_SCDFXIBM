@@ -20,6 +20,7 @@ This Wearable Emergenzy Band will communicate to user phone using the improved m
 
 ## Demo Picture
 
+<image src='arm cloud.JPG'>
 ## Architecture
 
 ## Feature

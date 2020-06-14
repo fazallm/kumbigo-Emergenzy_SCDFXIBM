@@ -15,6 +15,7 @@ This Repository is KumbiGo solution for **SCDF X IBM - Lifesavers' Innovation Ch
 KumbiGo will solve a problem about creating a system to have better understanding of emergency situation and create a preventive analytics tool. As Singapore coming toward an aging population, there will be many vurnerable citizens to emergency accident, such as cardiac attack, fall, and fire. Our team proposed a solution of combined IoT and mobile applications to have fast and preventive emergency situation. Our team also create an analytics tool for SCDF Officer so SCDF could have better resource allocation and preventive countermeasures.
 
 ## Demo Video
+[![Emergenzy!](http://img.youtube.com/vi/68Q8o2LnBG0/0.jpg)](http://www.youtube.com/watch?v=68Q8o2LnBG0)
 
 ## Architecture
 

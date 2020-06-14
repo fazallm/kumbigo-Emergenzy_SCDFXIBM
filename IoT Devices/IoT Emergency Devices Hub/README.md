@@ -18,12 +18,17 @@ In order to understand the emergency situation better among elderly and other po
 
 This Wearable Emergenzy Band will communicate to user phone using the improved my responder app using bluetooth signal
 
+## Architecture
+
+<image src='Architecture.JPG'>
+
 ## Demo Picture
 
 <image src='arm cloud.JPG'>
-## Architecture
+<image src='smoke emergency.JPG'>
+<image src='arm band.JPG'>
 
-## Feature
+## Sensor and Feature
 
 ## Road Map
 

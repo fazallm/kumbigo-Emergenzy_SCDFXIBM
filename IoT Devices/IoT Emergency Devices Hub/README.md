@@ -32,17 +32,19 @@ This is the demo picture of emergenzy band in development state with wiring in b
 
 ## Hardware Sensor and Feature
 
-<image src='arduino nano ble sense.JPG'>
+<image src='arduino nano ble sense.jpg'>
 The brain of our IoT Emergenzy Devices Hub is arduino nano ble sense. This devices have have microphone, light led, light intensity to know the current situation of the user in case of emergency.
 
 for privacy matters, the data from the arduino nano is stored locally in users phone encrypted via built in bluetooth connection. So no one can have the access to the user data. Only by the time of emergency happen, the data will then be uploaded securely to SCDF ADMIN SERVER, user can request turn off some of the sensor
 
 FIRST FEATURE: FIRE/SMOKE/DANGERAOUS GASS DETECTION
-<image src='smokepicture.JPG'>
+<image src='smokepicture.jpg'>
 using the two extra smoke sensor, the arduino will detect the presence of toxic, flamable gass and smole. The presence of this gass of smoke will detect if fire hazard presence in the house above certain treshold. The arduino then send data to the phone to activate emergency status. The phone then collect with additional data of the environment, location and medical history then send to SCDF 995 services.
 
 SECOND FEATURE: PANIC BUTTON
+
 <image src='iot devices hub.jpg'>
+
 This panic emergency button to activate will activate emergency status of cardiac arrest. The phone then collect with additional data of the environment, location and medical history then send to SCDF 995 services.
 
 ## Code
